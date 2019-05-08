@@ -1,0 +1,77 @@
+<!--coding: utf-8-->
+{% extends 'blog/base.html' %}
+{%load static%}
+
+{% block content %}
+
+
+<section class='cover'>
+  <!--<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">-->
+    
+    
+<section class='clubs'>
+  <header class='club_header'>
+    <h2 class='class_title' align="center">
+      <span class='club_category'></span>
+    </h2>
+  </header>
+  
+  <div class="card" style="width: 100%;"> 
+   <img src="{% static 'blog/images/sky.jpg' %}" class="card-img-top" alt="" style='width: 100%'>
+   
+      <div class="jane d-flex flex-column h-30 justify-content-center align-items-center">
+            <h1 style="font-size:50px;">  "오늘 날씨엔<br>
+            무슨 옷을 입을까?"</h1><br>
+        <div weather>
+            {% if cityname %}
+                <div class="info">
+                    <p>
+                        <span class="title">{{ cityname }}</span>
+                        <br>
+                        <span class="subtitle">{{ temperature }}° C</span>
+                        <br> {{ description }}
+                </div>
+            {% else %}
+                <form method='POST' class ="searchform" enctype="multipart/form-data" action="{% url 'weather' %}">{% csrf_token%}
+                        <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                        <input type="text" class="d-inline" id="{{ form.name.id_for_label }}" name="{{ form.name.html_name }}">
+                    <button class="searchbtn d-inline" stype="submit">검색</button>
+                </form>
+            {%endif%}    
+    </div>
+</div>
+    
+  </div>
+  <br><br>
+  <center><a href="{% url 'images' %}" class="btn btn-primary">오늘 사람들이 입은 옷은?</a></center>
+</section>
+<br>
+
+<div class="main">
+    {% for post in posts %}
+        {% if post.city == cityname %}
+            <div class="detail_post">
+                <a href="{% url 'post_detail' index=post.pk %}">{{ post.title }}</a><br>
+                <p>{{ post.pub_date }}</p>
+                <p>{{ post.author }}</p>
+                    <div class="cloth">
+                        {% for outer in post.get_outer_str_list %}
+                        <span class="mr-2">{{outer}}</span>
+                        {%endfor%}
+                        {% for top in post.get_top_str_list %}
+                        <span class="mr-2">{{top}}</span>
+                        {%endfor%}
+                        {% for bottom in post.get_bottom_str_list %}
+                        <span class="mr-2">{{bottom}}</span>
+                        {%endfor%}
+                        {% for acc in post.get_acc_str_list %}
+                        <span class="mr-2">{{acc}}</span>
+                        {%endfor%}
+                    </div>
+                <p>{{ post.body|linebreaks }}</p>
+            </div>
+        {% endif %}
+    {%endfor%}
+</div>
+
+{% endblock %}

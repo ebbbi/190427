@@ -1,0 +1,22 @@
+<!--coding: utf-8-->
+{% extends 'blog/base.html' %}
+{%load static%}
+
+{% block content %}
+<div class="img_main">
+<center><h1>오늘의 룩북</h1></center>
+  <div class="images">
+    {% for post in posts %}
+        {% if post.image %}
+            <div class="img_card" style="width: 18rem;">
+              <a href="{% url 'post_detail' index=post.pk %}"><img src="{{post.image.url}}" class="card-img-top"></a>
+              <div class="card-body">
+                <p class="card-text" align="center">{{post.body}}</p>
+              </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

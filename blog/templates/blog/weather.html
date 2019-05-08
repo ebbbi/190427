@@ -1,0 +1,38 @@
+{%load static%}
+    <div class="info">
+        <p>
+            <span class="title">{{ cityname }}</span>
+            <br>
+            <span class="subtitle">{{ temperature }}° F</span>
+            <br> {{ description }}
+    </div>
+    
+<div class="main">
+    {% for post in posts %}
+        {% if post.city == cityname %}
+            <div class="post">
+                <a href="{% url 'post_detail' index=post.pk %}">{{ post.title }}</a><br>
+                <p>{{ post.pub_date }}</p>
+                <p>{{ post.author }}</p>
+                    <div class="cloth">
+                        {% for outer in post.get_outer_str_list %}
+                        <span class="mr-2">{{outer}}</span>
+                        {%endfor%}
+                        {% for top in post.get_top_str_list %}
+                        <span class="mr-2">{{top}}</span>
+                        {%endfor%}
+                        {% for bottom in post.get_bottom_str_list %}
+                        <span class="mr-2">{{bottom}}</span>
+                        {%endfor%}
+                        {% for acc in post.get_acc_str_list %}
+                        <span class="mr-2">{{acc}}</span>
+                        {%endfor%}
+                    </div>
+                <p>{{ post.body|linebreaks }}</p>
+            </div>
+        {% endif %}
+    {%endfor%}
+</div>
+<div style="height:100px;">
+    
+</div>

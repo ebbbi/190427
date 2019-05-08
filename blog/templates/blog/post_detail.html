@@ -1,0 +1,59 @@
+<!--coding: utf-8-->
+{% extends 'blog/base.html' %}
+{%load static%}
+{% block content %}
+
+<div class="post">
+<a href="{% url 'post_edit' index=post.pk %}"><button type="button" class="btn btn-info btn-lg">수정하기</button></a>
+<a href="{% url 'post_remove' pk=post.pk %}"><button type="button" class="btn btn-info btn-lg">삭제</button></a></a><br><br>
+
+        {% if post.pub_date %}
+            <div class="date">
+                {{ post.pub_date }}
+            </div><br>
+        {% endif %}
+        
+        <div class="detail_cloth">
+            {% if post.image %}
+                <img src="{{post.image.url}}"><br><br>
+            {% endif %}
+            {% for outer in post.get_outer_str_list %}
+                <span class="mr-2">{{outer}}</span>
+            {%endfor%}
+            {% for top in post.get_top_str_list %}
+                <span class="mr-2">{{top}}</span>
+            {%endfor%}
+            {% for bottom in post.get_bottom_str_list %}
+                <span class="mr-2">{{bottom}}</span>
+            {%endfor%}
+            {% for acc in post.get_acc_str_list %}
+                <span class="mr-2">{{acc}}</span>
+            {%endfor%}
+        </div>
+</div><br>
+<div class="com">
+        <h2>댓글</h2>
+        <div class="cm">
+            <form method="POST">
+                {%csrf_token%}
+                {{form.as_p}}
+                <button type="submit" class="cmbtn">작성</button>
+            </form>
+        </div>
+        
+        {%for comment in comments%}
+            <div class="cmcm">
+                <div style="color:#B395C8;"><b>{{comment.author}}</b> | {{comment.time}}
+            </div>
+            <br>
+            {{comment.content}}
+                 <div class="cmudbtn">
+                    <a href="{% url 'comment_edit' index=post.pk cindex=comment.pk %}">수정</a>
+                    <a href="{% url 'comment_delete' index=post.pk cindex=comment.pk %}">삭제</a>
+                </div>
+            </div>
+            <hr><br>
+        {%endfor%}
+</div>
+
+{% endblock %}

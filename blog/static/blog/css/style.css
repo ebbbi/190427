@@ -1,0 +1,175 @@
+@font-face { font-family: 'Binggrae-Bold'; 
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff'); 
+font-weight: normal; 
+font-style: normal; }
+header .logo h1, header .logo h2{color: #f7d827;}
+footer.main{background: #eee;}
+body{
+    font-family: 'Binggrae-Bold';
+}
+
+.spacer{padding: 60px 0;}
+
+.carousel-item:nth-child(1){
+    background-image: url(static/blog/images/sky.jpg);
+}
+.carousel-item:nth-child(2){
+    background-image: url(static/blog/images/sunset/png);
+}
+
+.carousel-item{
+    height: 90vh;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.cover_title{
+    font-weight: 700;
+    font-size: 5rem;
+}
+
+.cover_text{
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.btn.btn-warning{
+    border-radius: 100px;
+    background-color: #ff9e1e !important;
+    border: none;
+}
+
+@media screen and (max-width: 576px){
+    .carousel-item{
+        height: 70vh;
+    }
+    .cover_title{
+        font-size: 2rem;
+    }
+}
+
+.post{
+    font-size:20px;
+    display: inline-block;
+    width:100%;
+    text-align:center;
+    background-color:#98B8DE;
+    margin-top: 1rem;
+    padding: 2rem;
+}
+
+.detail_post{
+    font-size:20px;
+    display: inline-block;
+    width: 30%;
+    text-align:center;
+    background-color:#98B8DE;
+    margin: 1rem;
+    padding: 2rem;
+    height:100%;
+}
+
+.main{
+    margin:0 3%;
+    height:400px;
+}
+
+.images{
+    margin: 2rem;
+}
+
+.card-img-top{
+    padding: 0;
+    opacity: 0.8;
+}
+
+.img_main{
+    margin:3rem;
+}
+
+.card{
+    position: relative;
+    height: 600px;
+}
+
+.jane{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.cmcontent{
+    width:700px;
+	height:80px;
+}
+.info{
+    font-size:50px;
+}
+
+.img_card{
+    display: inline-block;
+    margin: 0.5rem;
+}
+.navbar{
+    background-color:#ADCEC1;
+    border-radius:0;
+    height:80px;
+}
+
+.clubs{
+    margin: 2rem;
+}
+.searchbtn{
+    background-color:#ADCEC1;
+    border:0;
+    width:70px;
+    height:40px;
+    border-radius:10px;
+    display:inline;
+}
+.searchform{
+    font-size:20px;
+    display:inline-block;
+}
+
+button{
+    margin-left: 1rem;
+}
+.weather{
+    display:inline-block;
+}
+
+a.btn{
+    background-color:#ADCEC1;
+    border:0;
+    color:black;
+    height:35px;
+}
+.com{
+    text-align:center;
+    margin-top:3%;
+}
+.cmbtn{
+    background-color:#138496;
+    border:0;
+    width:80px;
+    height:40px;
+    color:white;
+}
+
+.edit_post{
+    text-align: center;
+    margin: 1rem;
+}
+
+.new_post{
+    text-align: center;
+}
+
+ul{
+     list-style:none;
+}
+a{
+    text-decoration:none;
+}

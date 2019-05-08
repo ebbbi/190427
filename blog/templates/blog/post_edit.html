@@ -1,0 +1,15 @@
+<!--coding: utf-8-->
+{% extends 'blog/base.html' %}
+{%load static%}
+
+{% block content %}
+
+<div class="edit_post">
+    <h1>수정하기</h1>
+    <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit"class="save btn btn-default">Save</button>
+    </form>
+</div>
+
+{% endblock %}
